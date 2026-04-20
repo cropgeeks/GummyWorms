@@ -31,6 +31,21 @@ public class Gummyworms extends SchemaImpl {
     public static final Gummyworms GUMMYWORMS = new Gummyworms();
 
     /**
+     * The table <code>gummyworms.genus</code>.
+     */
+    public final Genus GENUS = Genus.GENUS;
+
+    /**
+     * The table <code>gummyworms.genus_to_trophic_grouping</code>.
+     */
+    public final GenusToTrophicGrouping GENUS_TO_TROPHIC_GROUPING = GenusToTrophicGrouping.GENUS_TO_TROPHIC_GROUPING;
+
+    /**
+     * The table <code>gummyworms.trophicgroupings</code>.
+     */
+    public final Trophicgroupings TROPHICGROUPINGS = Trophicgroupings.TROPHICGROUPINGS;
+
+    /**
      * No further instances allowed
      */
     private Gummyworms() {

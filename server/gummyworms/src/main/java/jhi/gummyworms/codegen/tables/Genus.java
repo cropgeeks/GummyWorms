@@ -4,17 +4,25 @@
 package jhi.gummyworms.codegen.tables;
 
 
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 import jhi.gummyworms.codegen.Gummyworms;
+import jhi.gummyworms.codegen.Keys;
+import jhi.gummyworms.codegen.tables.Trophicgroupings.TrophicgroupingsPath;
 import jhi.gummyworms.codegen.tables.records.GenusRecord;
 
 import org.jooq.Condition;
 import org.jooq.Field;
+import org.jooq.ForeignKey;
 import org.jooq.Identity;
+import org.jooq.InverseForeignKey;
 import org.jooq.Name;
+import org.jooq.Path;
 import org.jooq.PlainSQL;
 import org.jooq.QueryPart;
+import org.jooq.Record;
 import org.jooq.SQL;
 import org.jooq.Schema;
 import org.jooq.Select;
@@ -24,7 +32,6 @@ import org.jooq.TableField;
 import org.jooq.TableOptions;
 import org.jooq.UniqueKey;
 import org.jooq.impl.DSL;
-import org.jooq.impl.Internal;
 import org.jooq.impl.SQLDataType;
 import org.jooq.impl.TableImpl;
 
@@ -94,6 +101,39 @@ public class Genus extends TableImpl<GenusRecord> {
         this(DSL.name("genus"), null);
     }
 
+    public <O extends Record> Genus(Table<O> path, ForeignKey<O, GenusRecord> childPath, InverseForeignKey<O, GenusRecord> parentPath) {
+        super(path, childPath, parentPath, GENUS);
+    }
+
+    /**
+     * A subtype implementing {@link Path} for simplified path-based joins.
+     */
+    public static class GenusPath extends Genus implements Path<GenusRecord> {
+
+        private static final long serialVersionUID = 1L;
+        public <O extends Record> GenusPath(Table<O> path, ForeignKey<O, GenusRecord> childPath, InverseForeignKey<O, GenusRecord> parentPath) {
+            super(path, childPath, parentPath);
+        }
+        private GenusPath(Name alias, Table<GenusRecord> aliased) {
+            super(alias, aliased);
+        }
+
+        @Override
+        public GenusPath as(String alias) {
+            return new GenusPath(DSL.name(alias), this);
+        }
+
+        @Override
+        public GenusPath as(Name alias) {
+            return new GenusPath(alias, this);
+        }
+
+        @Override
+        public GenusPath as(Table<?> alias) {
+            return new GenusPath(alias.getQualifiedName(), this);
+        }
+    }
+
     @Override
     public Schema getSchema() {
         return aliased() ? null : Gummyworms.GUMMYWORMS;
@@ -106,7 +146,25 @@ public class Genus extends TableImpl<GenusRecord> {
 
     @Override
     public UniqueKey<GenusRecord> getPrimaryKey() {
-        return Internal.createUniqueKey(Genus.GENUS, DSL.name("KEY_genus_PRIMARY"), new TableField[] { Genus.GENUS.GENUSID }, true);
+        return Keys.KEY_GENUS_PRIMARY;
+    }
+
+    @Override
+    public List<ForeignKey<GenusRecord, ?>> getReferences() {
+        return Arrays.asList(Keys.TROPHICID);
+    }
+
+    private transient TrophicgroupingsPath _trophicgroupings;
+
+    /**
+     * Get the implicit join path to the
+     * <code>gummyworms.trophicgroupings</code> table.
+     */
+    public TrophicgroupingsPath trophicgroupings() {
+        if (_trophicgroupings == null)
+            _trophicgroupings = new TrophicgroupingsPath(this, Keys.TROPHICID, null);
+
+        return _trophicgroupings;
     }
 
     @Override

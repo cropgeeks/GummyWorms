@@ -7,6 +7,8 @@
         </v-card-title>
 
         <v-card-text>
+          <p>Please select which database your file is from, this will tell us essential things about the formatting of the file. If you are creating a custom file (or want further information) we have created a formatting guide for each database for you to reference. This can be found <a href="#">here</a>.</p>
+          <v-select label="Select database:" :items="['Nemataxa', 'Silva']" v-model="database" ></v-select>
           <v-file-input v-model="file" label="Select a file" accept=".tsv,.csv,"/>
         </v-card-text>
 
@@ -25,7 +27,9 @@ import axios from "axios";
   export default {
     data() {
       return {
-        file: null
+        file: null,
+        database: null,
+        folder: null
         }
       },
     methods: {
@@ -35,21 +39,19 @@ import axios from "axios";
           return;
         }
 
-        const formData = new FormData();
+        let formData = new FormData();
         formData.append("file", this.file);
+        formData.append("database", this.database);
 
-        await axios.get("/api/submit", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
+        await axios.post("/submit", formData, {
+          headers: { "Content-Type": "multipart/form-data" }
         })
         .then((response) => {
-          console.log("File uploaded successfully:", response.data);
-          alert("File uploaded successfully!");
+          this.folder = response.data;
+          this.$router.push({ name: 'results', query: { folder: this.folder } });
         })
         .catch((error) => {
           console.error("Error uploading file:", error);
-          alert("Error uploading file. Please try again.");
         });
       }
     }

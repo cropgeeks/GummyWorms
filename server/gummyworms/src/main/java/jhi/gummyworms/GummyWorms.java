@@ -4,15 +4,16 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-import javax.servlet.*;
-import javax.servlet.annotation.*;
-
 import org.glassfish.jersey.media.multipart.*;
 import org.glassfish.jersey.server.ResourceConfig;
 
+import jakarta.servlet.*;
+import jakarta.servlet.annotation.*;
 import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.*;
 
-@ApplicationPath("/api")
+
+@ApplicationPath("/api/")
 @Path("/")
 @WebListener
 public class GummyWorms extends ResourceConfig implements ServletContextListener {
@@ -20,6 +21,22 @@ public class GummyWorms extends ResourceConfig implements ServletContextListener
 	public GummyWorms() {
 		packages("jhi.gummyworms");
 		register(MultiPartFeature.class);
+	}
+
+	@GET
+	public String getInformation(@Context ServletContext context)
+		throws Exception {
+		return "GummyWorms API - " + new java.util.Date();
+	}
+
+	@Override
+	public void contextInitialized(ServletContextEvent sce) {
+		DatabaseUtils.init(sce.getServletContext());
+	}
+
+	@Override
+	public void contextDestroyed(ServletContextEvent sce) {
+		DatabaseUtils.close();
 	}
 
 	public static String getConfigProperty(String id) {

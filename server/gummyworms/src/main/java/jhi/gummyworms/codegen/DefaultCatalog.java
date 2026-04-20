@@ -4,7 +4,11 @@
 package jhi.gummyworms.codegen;
 
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.jooq.Constants;
+import org.jooq.Schema;
 import org.jooq.impl.CatalogImpl;
 
 
@@ -22,10 +26,22 @@ public class DefaultCatalog extends CatalogImpl {
     public static final DefaultCatalog DEFAULT_CATALOG = new DefaultCatalog();
 
     /**
+     * The schema <code>gummyworms</code>.
+     */
+    public final Gummyworms GUMMYWORMS = Gummyworms.GUMMYWORMS;
+
+    /**
      * No further instances allowed
      */
     private DefaultCatalog() {
         super("");
+    }
+
+    @Override
+    public final List<Schema> getSchemas() {
+        return Arrays.asList(
+            Gummyworms.GUMMYWORMS
+        );
     }
 
     /**
