@@ -41,7 +41,9 @@ qiime demux summarize \
 ```
 ## Denoise your data
 
-You will then need to do some quality checks on your data and error correct your reads. To do this we will use the follwoing script:
+You will then need to do some quality checks on your data and error correct your reads. To do this we will use the follwoing script, \
+the parameters you use here should be dictated by the visualisations and outputs from the previous steps. Each data set is different and it is up to you and your data as to which parameters you choose \
+below is an example :
 ```
 
 # Activate QIIME2 environment, whatever name you gave it when you installed it.
@@ -69,3 +71,64 @@ qiime metadata tabulate \
   --m-input-file "${run}_denoising-stats.qza" \
   --o-visualization "${run}_denoising-stats_viz.qzv"
 ```
+## Assigntaxonomy to your data
+
+You then need to make a database into a classifer to use with your data. 
+The example below is Nemataxa, the input files are avalible at https://github.com/HCRU-Bioinformatics/NEMAtaxa
+
+This is done by the following script:
+
+```
+# Activate QIIME2 environment, whatever name you gave it when you installed it.
+conda activate qiime2-amplicon-2026.1
+
+qiime tools import \
+  --type 'FeatureData[Sequence]' \
+  --input-path NemaTaxa_V1.fasta \
+  --output-path NemaTaxa_V1_seq.qza
+
+#then the taxonomy inforation
+qiime tools import \
+  --type 'FeatureData[Taxonomy]' \
+  --input-format HeaderlessTSVTaxonomyFormat \
+  --input-path NemaTaxa_V1.taxonomy \
+  --output-path NemaTaxa_V1_taxonomy.qza
+
+qiime feature-classifier fit-classifier-naive-bayes \
+  --i-reference-reads NemaTaxa_V1_seq.qza \
+  --i-reference-taxonomy NemaTaxa_V1_taxonomy.qza \
+  --o-classifier NemaTaxa_2026.1_seq_classifier.qza
+```
+
+Afterwards you can use this newly created database to classify your sequences, you will also need your metadata file \
+in a tab seperated format:
+
+```
+
+# Activate QIIME2 environment
+source activate qiime2-amplicon-2025.10
+
+# Define run/sample name
+run="nematode"
+
+# Classify sequences using pre-trained classifier
+qiime feature-classifier classify-sklearn \
+  --i-classifier NemaTaxa_2026.1_seq_classifier.qza \
+  --i-reads "${run}_rep-seqs.qza" \
+  --o-classification "${run}_taxonomy.qza"
+
+# Visualise taxonomy assignments
+qiime metadata tabulate \
+  --m-input-file "${run}_taxonomy.qza" \
+  --o-visualization "${run}_taxonomy_viz.qzv"
+
+# Generate taxa bar plot
+qiime taxa barplot \
+  --m-metadata-file "${run}_metadata.tsv" \
+  --i-table "${run}_table.qza" \
+  --i-taxonomy "${run}_taxonomy.qza" \
+  --o-visualization "${run}_taxa_barplot.qzv"
+```
+Then upload the nematode_taxa_barplot.qzv output in the the Qiime2 view webpage https://view.qiime2.org/ using the drag and drop. 
+Here you will see a taxa bar plot similar this this:
+
