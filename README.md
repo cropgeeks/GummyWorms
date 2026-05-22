@@ -27,7 +27,7 @@ Then you need to load your samples into Qiime2 using that manifest:
 cd /home/user
 
 # Activate QIIME2 environment, whatever name you gave it when you installed it.
-source activate qiime2-amplicon-2026.1
+conda activate qiime2-amplicon-2026.1
 
 # Define input manifest and grab the basename to use it to name your outputs
 manifest="nematode_manifest"
@@ -115,7 +115,7 @@ in a tab seperated format:
 ```
 
 # Activate QIIME2 environment
-source activate qiime2-amplicon-2025.10
+conda activate qiime2-amplicon-2026.1
 
 # Define run/sample name
 run="nematode"
