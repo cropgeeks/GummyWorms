@@ -10,7 +10,7 @@ These workflows are simplified examples designed to help users process data with
 
 ## Import your data
 
-This tutorial will show you how to preprocess you nematode amplicon data for use iwth Gummyworms a functional feeding guild database that works with Qiime2 outputs.
+This tutorial will show you how to preprocess you nematode amplicon data for use with Gummyworms a functional feeding guild database that works with QIIME2 outputs.
 
 First you will need to import your data, to do this you will need to make a manifest as a tsv that looks like this:
 
