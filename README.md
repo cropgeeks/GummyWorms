@@ -133,3 +133,10 @@ Then upload the nematode_taxa_barplot.qzv output in the the Qiime2 view webpage 
 Here you will see a taxa bar plot similar this this:
 <img width="1551" height="1098" alt="image" src="https://github.com/user-attachments/assets/18d40ce2-e320-4877-a737-61a476b8ae76" />
 
+Make sure you have selected the highest (level 6 or level 7) taxonomic resolution you can and click download CSV in the left hand corner. Convert the csv to a TSV. This can be done by opening it in excel as a csv and save as a Tab-delimited. 
+
+## Using Gummyworms
+
+Got to https://gummyworms.hutton.ac.uk/ and select the database you use, in our case this is NemaTaxa. drag and drop your TSV. 
+
+<img width="1208" height="634" alt="image" src="https://github.com/user-attachments/assets/d9c62bb6-6f08-42ad-b9fa-7a9c3b893798" />
