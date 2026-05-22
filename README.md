@@ -89,18 +89,20 @@ This is done by the following script:
 # Activate QIIME2 environment, whatever name you gave it when you installed it.
 conda activate qiime2-amplicon-2026.1
 
+#import the sequences
 qiime tools import \
   --type 'FeatureData[Sequence]' \
   --input-path NemaTaxa_V1.fasta \
   --output-path NemaTaxa_V1_seq.qza
 
-#then the taxonomy inforation
+# import the taxonomy information
 qiime tools import \
   --type 'FeatureData[Taxonomy]' \
   --input-format HeaderlessTSVTaxonomyFormat \
   --input-path NemaTaxa_V1.taxonomy \
   --output-path NemaTaxa_V1_taxonomy.qza
 
+#create the classifier
 qiime feature-classifier fit-classifier-naive-bayes \
   --i-reference-reads NemaTaxa_V1_seq.qza \
   --i-reference-taxonomy NemaTaxa_V1_taxonomy.qza \
