@@ -78,7 +78,7 @@ qiime metadata tabulate \
   --m-input-file "${run}_denoising-stats.qza" \
   --o-visualization "${run}_denoising-stats_viz.qzv"
 ```
-## Assigntaxonomy to your data
+## Assign taxonomy to your sequences
 
 You then need to make a database into a classifer to use with your data. 
 The example below is Nemataxa, the input files are avalible at https://github.com/HCRU-Bioinformatics/NEMAtaxa
