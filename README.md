@@ -1,9 +1,19 @@
 # Gummyworms workflow
+
+This workflow uses QIIME2 and GummyWorms to generate functional summary data from nematode amplicon sequences. 
+Please note that the developers of GummyWorms are independent of the QIIME2 developers. 
+
+If you use this workflow, you must cite both GummyWorms and QIIME2 in any resulting work.
+
+These workflows are simplified examples designed to help users get started with QIIME2. 
+File names, paths, and parameters will need to be modified them to match your own dataset and computing environment.
+
+
 ## Import your data
 
-This tutorial will show you how to preprocess you nematode amplicon data for use iwth Gummyworms a function feeding guild database that works with QIime2 outputs.
+This tutorial will show you how to preprocess you nematode amplicon data for use iwth Gummyworms a functional feeding guild database that works with Qiime2 outputs.
 
-First you will need to import your data, you will need to make a manifest as a tsv that looks like this:
+First you will need to import your data, to do this you will need to make a manifest as a tsv that looks like this:
 
 ```
 sample-id    forward-absolute-filepath    reverse-absolute-filepath
