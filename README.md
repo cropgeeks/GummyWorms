@@ -131,4 +131,5 @@ qiime taxa barplot \
 ```
 Then upload the nematode_taxa_barplot.qzv output in the the Qiime2 view webpage https://view.qiime2.org/ using the drag and drop. 
 Here you will see a taxa bar plot similar this this:
+<img width="1551" height="1098" alt="image" src="https://github.com/user-attachments/assets/18d40ce2-e320-4877-a737-61a476b8ae76" />
 
