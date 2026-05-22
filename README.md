@@ -50,9 +50,7 @@ qiime demux summarize \
 ```
 ## Denoise your data
 
-You will then need to do some quality checks on your data and error correct your reads. To do this we will use the follwoing script, \
-the parameters you use here should be dictated by the visualisations and outputs from the previous steps. Each data set is different and it is up to you and your data as to which parameters you choose \
-below is an example :
+You will then need to do some quality checks on your data and error correct your reads. To do this we will use the follwoing script, the parameters you use here should be dictated by the visualisations and outputs from the previous steps. Each data set is different and it is up to you and your data as to which parameters you choose below is an example :
 ```
 
 # Activate QIIME2 environment, whatever name you gave it when you installed it.
