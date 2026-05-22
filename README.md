@@ -109,7 +109,7 @@ qiime feature-classifier fit-classifier-naive-bayes \
   --o-classifier NemaTaxa_2026.1_seq_classifier.qza
 ```
 
-Afterwards you can use this newly created database to classify your sequences, you will also need your metadata file \
+Afterwards you can use this newly created database to classify your sequences, you will also need your metadata file 
 in a tab seperated format:
 
 ```
