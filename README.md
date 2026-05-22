@@ -5,8 +5,7 @@ Please note that the developers of GummyWorms are independent of the QIIME2 deve
 
 If you use this workflow, you must cite both GummyWorms and QIIME2 in any resulting work.
 
-These workflows are simplified examples designed to help users get started with QIIME2. 
-File names, paths, and parameters will need to be modified them to match your own dataset and computing environment.
+These workflows are simplified examples designed to help users process data with QIIME2 from raw all the way to GummyWorms. Therefore file names, paths, and parameters will need to be modified them to match your own dataset and computing environment.
 
 
 ## Import your data
