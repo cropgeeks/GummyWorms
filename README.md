@@ -137,7 +137,7 @@ Make sure you have selected the highest (level 6 or level 7) taxonomic resolutio
 
 ## Using Gummyworms
 
-Got to https://gummyworms.hutton.ac.uk/ and select the database you use, in our case this is NemaTaxa. drag and drop your TSV. 
+Go to https://gummyworms.hutton.ac.uk/ and select the database you used, in our case this is NemaTaxa. Simply drag and drop your TSV. 
 
 <img width="1135" height="579" alt="image" src="https://github.com/user-attachments/assets/ab870c4f-c027-4b3b-83c1-0c0b2de55cbd" />
 
