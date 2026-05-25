@@ -1,18 +1,18 @@
-# Gummyworms workflow
+# GummyWorms workflow
 
-This workflow uses QIIME2 and GummyWorms to generate functional summary data from nematode amplicon sequences. 
-Please note that the developers of GummyWorms are independent of the QIIME2 developers. 
+This workflow uses QIIME 2 and GummyWorms to generate functional summary data from nematode amplicon sequences. 
+Please note that the developers of GummyWorms are independent of the QIIME 2 developers. 
 
-If you use this workflow, you must cite both GummyWorms and QIIME2 in any resulting work.
+If you use this workflow, you must cite both GummyWorms and QIIME 2 in any resulting work.
 
-These workflows are simplified examples designed to help users process data with QIIME2 from raw all the way to GummyWorms. Therefore file names, paths, and parameters will need to be modified them to match your own dataset and computing environment.
+These workflows are simplified examples designed to help users process data with QIIME2 from raw all the way to GummyWorms. Therefore file names, paths, and parameters will need to be modified to match your own dataset and computing environment.
 
 
 ## Import your data
 
-This tutorial will show you how to preprocess you nematode amplicon data for use with Gummyworms a functional feeding guild database that works with QIIME2 outputs.
+This tutorial will show you how to preprocess you nematode amplicon data for use with GummyWorms a functional feeding guild database that works with QIIME2 outputs.
 
-First you will need to import your data, to do this you will need to make a manifest as a tsv that looks like this:
+First you will need to import your data, to do this you will need to make a manifest as a TSV that looks like this:
 
 ```
 sample-id    forward-absolute-filepath    reverse-absolute-filepath
@@ -21,12 +21,12 @@ Sample2    /path/to/fastq/Sample2_R1.fastq.gz    /path/to/fastq/Sample2_R2.fastq
 Sample3    /path/to/fastq/Sample3_R1.fastq.gz    /path/to/fastq/Sample3_R2.fastq.gz
 ```
 
-Then you need to load your samples into Qiime2 using that manifest:
+Then you need to load your samples into QIIME 2 using that manifest:
 ```
 # Set working directory
 cd /home/user
 
-# Activate QIIME2 environment, whatever name you gave it when you installed it.
+# Activate your QIIME 2 environment, using the name you gave it when you installed it.
 conda activate qiime2-amplicon-2026.1
 
 # Define input manifest and grab the basename to use it to name your outputs
@@ -50,10 +50,10 @@ qiime demux summarize \
 ```
 ## Denoise your data
 
-You will then need to do some quality checks on your data and error correct your reads. To do this we will use the follwoing script, the parameters you use here should be dictated by the visualisations and outputs from the previous steps. Each data set is different and it is up to you and your data as to which parameters you choose below is an example :
+You will then need to do some quality checks on your data and error correct your reads. To do this we will use the following script, the parameters you use here should be dictated by the visualisations and outputs from the previous steps. Each data set is different and it is up to you and your data as to which parameters you choose below is an example :
 ```
 
-# Activate QIIME2 environment, whatever name you gave it when you installed it.
+# Activate your QIIME 2 environment, using the name you gave it when you installed it.
 conda activate qiime2-amplicon-2026.1
 
 #go into the working directory
@@ -80,13 +80,13 @@ qiime metadata tabulate \
 ```
 ## Assign taxonomy to your sequences
 
-You then need to make a database into a classifer to use with your data. 
-The example below is Nemataxa, the input files are avalible at https://github.com/HCRU-Bioinformatics/NEMAtaxa
+You then need to make a database into a classifier to use with your data. 
+The example below is NemaTaxa, the input files are available at https://github.com/HCRU-Bioinformatics/NEMAtaxa
 
 This is done by the following script:
 
 ```
-# Activate QIIME2 environment, whatever name you gave it when you installed it.
+# Activate your QIIME 2 environment, using the name you gave it when you installed it.
 conda activate qiime2-amplicon-2026.1
 
 #import the sequences
@@ -110,11 +110,11 @@ qiime feature-classifier fit-classifier-naive-bayes \
 ```
 
 Afterwards you can use this newly created database to classify your sequences, you will also need your metadata file 
-in a tab seperated format:
+in a tab separated format:
 
 ```
 
-# Activate QIIME2 environment
+# Activate QIIME 2 environment
 conda activate qiime2-amplicon-2026.1
 
 # Define run/sample name
@@ -138,13 +138,13 @@ qiime taxa barplot \
   --i-taxonomy "${run}_taxonomy.qza" \
   --o-visualization "${run}_taxa_barplot.qzv"
 ```
-Then upload the nematode_taxa_barplot.qzv output in the the Qiime2 view webpage https://view.qiime2.org/ using the drag and drop. 
+Then upload the nematode_taxa_barplot.qzv output in the the QIIME 2 view webpage https://view.qiime2.org/ using the drag and drop. 
 Here you will see a taxa bar plot similar this this:
 <img width="1551" height="1098" alt="image" src="https://github.com/user-attachments/assets/18d40ce2-e320-4877-a737-61a476b8ae76" />
 
-Make sure you have selected the highest (level 6 or level 7) taxonomic resolution you can and click download CSV in the left hand corner. Convert the csv to a TSV. This can be done by opening it in excel as a csv and save as a Tab-delimited. 
+Make sure you have selected the highest (level 6 or level 7) taxonomic resolution you can and click download CSV in the left-hand corner. Convert the CSV to a TSV. This can be done by opening it in excel as a CSV and save as a tab-delimited. 
 
-## Using Gummyworms
+## Using GummyWorms
 
 Go to https://gummyworms.hutton.ac.uk/ and select the database you used, in our case this is NemaTaxa. Simply drag and drop your TSV. 
 
