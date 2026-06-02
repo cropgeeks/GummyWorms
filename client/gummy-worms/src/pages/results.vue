@@ -1,13 +1,28 @@
 <template>
-    <p>Results Page</p> 
-    <v-btn @click="showResultsTable = !showResultsTable">
-        Toggle Results Table
-    </v-btn>
-    <v-btn @click="downloadResults()">Download Results</v-btn>
-    <v-btn @click="showUnknownsList = !showUnknownsList">
-        Toggle Unknowns List
-    </v-btn>
-    <v-btn @click="downloadUnknowns()">Download Unknowns</v-btn>
+    <h1>Results</h1>
+    <v-container>
+        <v-row>
+            <v-col>
+                <v-btn @click="showResultsTable = !showResultsTable">
+                    Toggle Results Table
+                </v-btn>
+            </v-col>
+            <v-col>
+                <v-btn @click="downloadResults()">Download Results</v-btn>
+            </v-col>
+        </v-row>
+        <v-row>
+            <v-col>
+                <v-btn @click="showUnknownsList = !showUnknownsList">
+                    Toggle Unknowns List
+                </v-btn>
+            </v-col>
+        
+            <v-col>
+                <v-btn @click="downloadUnknowns()">Download Unknowns</v-btn>
+            </v-col>
+        </v-row>
+    </v-container>
 
     <ResultsTable :folder="$route.query.folder" v-if="showResultsTable"/>
     <UnknownsList :folder="$route.query.folder" v-if="showUnknownsList"/>

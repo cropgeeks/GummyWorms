@@ -53,4 +53,49 @@ public class GummyWorms extends ResourceConfig implements ServletContextListener
 
 		return properties.getProperty(id);
 	}
+
+	public static String getDbUrl() {
+		if (GummyWorms.properties == null) {
+			properties = new Properties();
+
+			try {
+				FileInputStream is = new FileInputStream(System.getProperty("catalina.base") + "/webapps/ROOT/WEB-INF/classes/params.properties");
+				GummyWorms.properties.load(is);
+				is.close();
+			}
+			catch (IOException e) { e.printStackTrace(); }
+		}
+
+		return properties.getProperty("db.url");
+	}
+
+	public static String getDbUsername() {
+		if (GummyWorms.properties == null) {
+			properties = new Properties();
+
+			try {
+				FileInputStream is = new FileInputStream(System.getProperty("catalina.base") + "/webapps/ROOT/WEB-INF/classes/params.properties");
+				GummyWorms.properties.load(is);
+				is.close();
+			}
+			catch (IOException e) { e.printStackTrace(); }
+		}
+
+		return properties.getProperty("db.username");
+	}
+
+	public static String getDbPassword() {
+		if (GummyWorms.properties == null) {
+			properties = new Properties();
+
+			try {
+				FileInputStream is = new FileInputStream(System.getProperty("catalina.base") + "/webapps/ROOT/WEB-INF/classes/params.properties");
+				GummyWorms.properties.load(is);
+				is.close();
+			}
+			catch (IOException e) { e.printStackTrace(); }
+		}
+
+		return properties.getProperty("db.password");
+	}
 }

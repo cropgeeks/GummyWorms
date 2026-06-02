@@ -1,5 +1,14 @@
 <template>
-    <p v-for="value in responseData">{{ value }}</p>
+  <div v-for="(items, category) in responseData" :key="category" ml-4>
+    <h3>{{ category }}</h3>
+
+    <ul>
+      <li v-for="(item, index) in items" :key="index">
+        {{ item }}
+      </li>
+    </ul>
+    <br>
+  </div>
 </template>
 
 <script>
