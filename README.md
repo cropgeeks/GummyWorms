@@ -144,9 +144,15 @@ Here you will see a taxa bar plot similar this this:
 
 Make sure you have selected the highest (level 6 or level 7) taxonomic resolution you can and click download CSV in the left-hand corner. Convert the CSV to a TSV. This can be done by opening it in excel as a CSV and save as a tab-delimited. 
 
+The table will look somthing like this, where the top row are taxonomic names and the first column are your samples:
+
+<img width="1105" height="422" alt="image" src="https://github.com/user-attachments/assets/0f13aa9a-4702-4f07-a322-8e0b178cff82" />
+
+
 ## Using GummyWorms
 
 Go to https://gummyworms.hutton.ac.uk/ and select the database you used, in our case this is NemaTaxa. Simply drag and drop your TSV. 
 
-<img width="1135" height="579" alt="image" src="https://github.com/user-attachments/assets/ab870c4f-c027-4b3b-83c1-0c0b2de55cbd" />
+<img width="1012" height="641" alt="image" src="https://github.com/user-attachments/assets/77d9445f-38e0-44eb-8744-d2686f1bef43" />
+
 
