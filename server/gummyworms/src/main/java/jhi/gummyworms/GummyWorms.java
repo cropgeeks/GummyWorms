@@ -44,7 +44,7 @@ public class GummyWorms extends ResourceConfig implements ServletContextListener
 			properties = new Properties();
 
 			try {
-				FileInputStream is = new FileInputStream(System.getProperty("catalina.base") + "/webapps/ROOT/WEB-INF/classes/params.properties");
+				FileInputStream is = new FileInputStream(System.getProperty("catalina.base") + "/webapps/ROOT/WEB-INF/classes/gummyworms.properties");
 				GummyWorms.properties.load(is);
 				is.close();
 			}
@@ -59,7 +59,7 @@ public class GummyWorms extends ResourceConfig implements ServletContextListener
 			properties = new Properties();
 
 			try {
-				FileInputStream is = new FileInputStream(System.getProperty("catalina.base") + "/webapps/ROOT/WEB-INF/classes/params.properties");
+				FileInputStream is = new FileInputStream(System.getProperty("catalina.base") + "/webapps/ROOT/WEB-INF/classes/gummyworms.properties");
 				GummyWorms.properties.load(is);
 				is.close();
 			}
@@ -74,7 +74,7 @@ public class GummyWorms extends ResourceConfig implements ServletContextListener
 			properties = new Properties();
 
 			try {
-				FileInputStream is = new FileInputStream(System.getProperty("catalina.base") + "/webapps/ROOT/WEB-INF/classes/params.properties");
+				FileInputStream is = new FileInputStream(System.getProperty("catalina.base") + "/webapps/ROOT/WEB-INF/classes/gummyworms.properties");
 				GummyWorms.properties.load(is);
 				is.close();
 			}
@@ -89,7 +89,7 @@ public class GummyWorms extends ResourceConfig implements ServletContextListener
 			properties = new Properties();
 
 			try {
-				FileInputStream is = new FileInputStream(System.getProperty("catalina.base") + "/webapps/ROOT/WEB-INF/classes/params.properties");
+				FileInputStream is = new FileInputStream(System.getProperty("catalina.base") + "/webapps/ROOT/WEB-INF/classes/gummyworms.properties");
 				GummyWorms.properties.load(is);
 				is.close();
 			}
