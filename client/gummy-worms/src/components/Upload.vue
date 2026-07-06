@@ -7,7 +7,7 @@
         </v-card-title>
 
         <v-card-text>
-          <p>Please select which database your file is from, this will tell us essential things about the formatting of the file. You can find more information on how to format your file and generate results in the correct format <a href="https://github.com/cropgeeks/GummyWorms#gummyworms-workflow" target="_blank">here</a>.</p>
+          <p>Please select which database your file is from, this will tell us essential things about the formatting of the file. You can find more information on how to format your file and generate results in the correct format <!--<a href="https://github.com/cropgeeks/GummyWorms#gummyworms-workflow" target="_blank">here.</a>-->on our GitHub page.</p>
           <v-select label="Select database:" :items="['Nemataxa', 'Silva']" v-model="database" ></v-select>
           <v-file-input v-model="file" label="Select a file" accept=".tsv,.csv,"/>
         </v-card-text>
