@@ -8,9 +8,9 @@
       <router-view />
       </div>
     </v-main>
-    <v-footer>
+    <!--<v-footer>
       <AppFooter />
-    </v-footer>
+    </v-footer>-->
   </v-app>
 </template>
 
