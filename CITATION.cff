@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+title: "GummyWorms: A tool for automating the assignment of nematode functional groups from amplicon pipelines"
+message: "If you use GummyWorms, please cite this software using the metadata below."
+type: software
+
+authors:
+  - family-names: Buswell
+    given-names: Victoria G
+    orcid: "https://orcid.org/0000-0002-0767-6770"
+  - family-names: Smith
+    given-names: Becky
+    orcid: "https://orcid.org/0000-0002-8968-3383"
+  - family-names: Neilson
+    given-names: Roy
+    orcid: "https://orcid.org/0000-0003-4544-2227"
+
+year: 2026
+
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.22641939
+
+repository-code: "https://github.com/cropgeeks/GummyWorms"
+
+preferred-citation:
+  type: software
+  authors:
+    - family-names: Buswell
+      given-names: Victoria G.
+    - family-names: Smith
+      given-names: B.
+    - family-names: Neilson
+      given-names: R.
+  title: "GummyWorms: A tool for automating the assignment of nematode functional groups from amplicon pipelines"
+  year: 2026
+  doi: 10.5281/zenodo.22641939

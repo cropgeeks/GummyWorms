@@ -151,7 +151,7 @@ The table will look somthing like this, where the top row are taxonomic names an
 
 ## Using GummyWorms
 
-Go to https://gummyworms.hutton.ac.uk/ and select the database you used, in our case this is NemaTaxa. Simply drag and drop your TSV. 
+Go to the GummyWorms website and select the database you used, in our case this is NemaTaxa. Simply drag and drop your TSV. 
 
 <img width="1151" height="707" alt="image" src="https://github.com/user-attachments/assets/a68ffa23-63f3-4d91-aede-4111b7498a20" />
 
