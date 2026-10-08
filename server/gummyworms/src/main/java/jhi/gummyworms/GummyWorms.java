@@ -1,8 +1,13 @@
 package jhi.gummyworms;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
 
 import org.glassfish.jersey.media.multipart.*;
 import org.glassfish.jersey.server.ResourceConfig;
@@ -18,6 +23,9 @@ import jakarta.ws.rs.core.*;
 @WebListener
 public class GummyWorms extends ResourceConfig implements ServletContextListener {
 	private static Properties properties;
+	private ScheduledExecutorService scheduler;
+	private Logger log = Logger.getLogger(GummyWorms.class.getName());
+	
 	public GummyWorms() {
 		packages("jhi.gummyworms");
 		register(MultiPartFeature.class);
@@ -32,11 +40,38 @@ public class GummyWorms extends ResourceConfig implements ServletContextListener
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
 		DatabaseUtils.init(sce.getServletContext());
+
+		scheduler = Executors.newSingleThreadScheduledExecutor();
+
+        scheduler.scheduleAtFixedRate(
+            () -> {
+
+				log.info("Running data deletion task at " + new java.util.Date());
+				deleteFolder(new File("data"));
+				log.info("Deletion task completed at " + new java.util.Date());
+				
+			},
+            0,
+            1,
+            TimeUnit.DAYS
+        );
+	}
+
+	private void deleteFolder(File folder) {
+		
+		for (File file : folder.listFiles()) {
+			if (file.isDirectory()) {
+				deleteFolder(file);
+			}
+			log.info("Deleting file: " + file.getAbsolutePath());
+			file.delete();
+		}
 	}
 
 	@Override
 	public void contextDestroyed(ServletContextEvent sce) {
 		DatabaseUtils.close();
+		scheduler.shutdownNow();
 	}
 
 	public static String getConfigProperty(String id) {
